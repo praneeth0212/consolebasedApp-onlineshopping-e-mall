@@ -12,6 +12,7 @@ import com.mall.customerRegister.service.CustomerRegisterService;
 import com.mall.Dao.CustomerLoginDAO;
 import com.mall.Dao.ProductAddDAO;
 import com.mall.Dao.Impl.CustomerLoginDAOImpl;
+import com.mall.Dao.Impl.CustomerSearchDAOImpl;
 import com.mall.Dao.Impl.MarkAsShippedDAOImpl;
 import com.mall.Dao.Impl.ProductAddDAOImpl;
 import com.mall.Exception.BusinessException;
@@ -59,37 +60,107 @@ private static Logger log = Logger.getLogger(Testcases.class);
 	}*/
 
 CustomerLoginDAOImpl obj = new CustomerLoginDAOImpl();
+
+private CustomerRegisterServiceImpl customerRegister;
 	
 	@Test
 	public void testCustomerLogin() {
 		try {
 			boolean result = true;
-			assertEquals(result,obj.customerLogin("madhu@gmail.com", "as@AS1cgrr"));
+			assertEquals(result,obj.customerLogin("praneethsalla@gmail.com", "salla@123"));
 		}catch (BusinessException e) {}
-			/*fail(e.getMessage());
-		}
 	}
 
-	/*
-MarkAsShippedDAOImpl markShipped = new MarkAsShippedDAOImpl();
-	
-	@Test
-	public void testMarkShipped() {
-		Order order = new Order();
-		order.setOrderId(10);
-		try {
-			assertEquals(1,markShipped.markDelivered(order));
-		} catch (BusinessException e) {
+/*
 			fail(e.getMessage());
 		}
 	}
-	
+}*/
 
 
-	*/
-		
-	
-	
+ProductAddServiceImpl productAdd = new ProductAddServiceImpl();
+
+@Test
+public void testProductAdd() {
+	Product product = new Product();
+	product.setId(1212);
+	product.setName("Mouse");
+	product.setManufacturer("Logitech");
+	product.setCost(20000);
+	try {
+		assertEquals(1,productAdd.addProduct(product));
+	} catch (BusinessException e) {}
+}
+		/*fail(e.getMessage());
+	}
+
+*/
+CustomerSearchDAOImpl customerSearch = new CustomerSearchDAOImpl();
+Customer customer = new Customer();
+
+@Test
+public void testCustomerSearchById() {
+	try {
+		int id = 1;
+		assertNotNull(customerSearch.getCustomerById(id));
+	} catch (BusinessException e) {}
+}
+	/*	fail(e.getMessage());
 	}
 }
+*/
+@Test
+public void testCustomerSearchByName() {
+	try {
+		assertNotNull(customerSearch.getCustomerByName("madhu"));
+	} catch (BusinessException e) {}
+}
+	/*
+		fail(e.getMessage());
+	}
+}
+*/
+@Test
+public void testCustomerSearchByEmail() {
+	try {
+		assertNotNull(customerSearch.getCustomerByEmail("madhu@gmail.com"));
+	} catch (BusinessException e) {}
+}
+		/*fail(e.getMessage());
+	}
+}
+*/
+@Test
+public void testCustomerSearchByOrderId() {
+	try {
+		int id = 1;
+		assertNotNull(customerSearch.getCustomerByOrderId(id));
+	} catch (BusinessException e) {}
+}
+	/*
+		fail(e.getMessage());
+	}
+}
+*/
 
+
+CustomerRegisterServiceImpl CustomerRegister = new CustomerRegisterServiceImpl();
+
+@Test
+public void testCustomerRegister() {
+	Customer customer = new Customer();
+	customer.setCustomerId(41);
+	customer.setCustomerEmail("pran@gmail.com");
+	customer.setCustomerName("mintu");
+	customer.setCustomerPassword("Min@123");
+	try {
+		assertEquals(0,CustomerRegister.registerCustomer(customer));
+	} catch (BusinessException e) {}
+}
+}
+
+	/*	fail(e.getMessage());
+	}
+}
+*/
+  
