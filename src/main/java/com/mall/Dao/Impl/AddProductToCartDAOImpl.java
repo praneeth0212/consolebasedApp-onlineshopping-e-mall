@@ -19,6 +19,7 @@ public class AddProductToCartDAOImpl implements AddProductToCartDAO {
 		int c = 0;
 		try(Connection connection=MysSqlDBconnection.getConnection()){
 			String sql="insert into cart(customerId,productId) values(?,?)";
+			String name="john";
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setInt(1, cart.getCustomerId());
 			preparedStatement.setInt(2, cart.getProductId());

@@ -48,16 +48,20 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		
 		log.info("This is a console based application");
-		log.info("===========================");
+		log.info("====================================");
 		log.info("Welcome to e-mall online shopping");
-		log.info("===========================");
 		int option = 0;
 		do {
+	    log.info("=================================");
 		log.info("\n What's in your mind?");
+        log.info("=================================");
+        
         log.info("1)Login as Employee?");
         log.info("2)Login as Customer?");
         log.info("3)New to e-mall? Register Here as a customer!");
         log.info("4)E.X.I.T");
+        log.info("=================================");
+
         log.info("Enter Your Choice here 1-4");
         
         try {
@@ -367,7 +371,7 @@ public class Main {
 									carT.setCustomerId(CustomerLoginDAOImpl.cd);
 									//carT.setProductId(pid);
 									placeAnOrderServiceImpl.placeAnOrder(carT);
-									log.info("add items to cart");
+									log.info("Order placed successfully");
 								} catch (BusinessException e) {
 									log.warn(e.getMessage());
 								}		

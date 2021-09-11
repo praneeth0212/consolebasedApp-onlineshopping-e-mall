@@ -26,8 +26,11 @@ public class CustomerLoginDAOImpl implements CustomerLoginDAO {
 			if(resultSet.next()) {
 				//cart.setCustomerId(resultSet.getInt(1));
 				cd = resultSet.getInt(1);
+				
 				result = true;
 			}
+			
+			
 			else {
 				throw new BusinessException("Customer not registered");
 				

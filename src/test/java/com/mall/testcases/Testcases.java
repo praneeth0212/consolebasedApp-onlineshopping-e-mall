@@ -75,8 +75,8 @@ private CustomerRegisterServiceImpl customerRegister;
 			fail(e.getMessage());
 		}
 	}
-}*/
 
+*/
 
 ProductAddServiceImpl productAdd = new ProductAddServiceImpl();
 
